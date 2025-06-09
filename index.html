@@ -575,7 +575,7 @@
         <div class="quiz-screen" id="quizScreen">
             <div class="quiz-header">
                 <div class="level-info">
-                    Level <span id="currentLevel">1</span> of 20
+                    Level <span id="currentLevel">1</span> of 5
                 </div>
                 <div class="timer" id="timer">30</div>
                 <button class="back-btn" onclick="goBack()">← Back</button>
@@ -613,9 +613,974 @@
         let timer = 30; // Initial timer value
         let timerInterval; // Stores the interval ID for the timer
         let questionsForLevel = []; // Array to hold questions for the current level
-        let questionsForSubject = {}; // Object to hold all questions loaded from JSON files
-        const TOTAL_LEVELS = 20; // Total number of levels per subject
+        
+        // Define all questions directly in the HTML file
+        const TOTAL_LEVELS = 5; // Total number of levels per subject
         const QUESTIONS_PER_LEVEL = 7; // Number of questions per level
+        
+        const questionsForSubject = {
+            english: [
+                // English Level 1
+                [
+                    {
+                        question: "Identify the noun in the sentence: 'The quick brown fox jumps over the lazy dog.'",
+                        options: ["quick", "jumps", "fox", "over"],
+                        correct: 2
+                    },
+                    {
+                        question: "Choose the correct pronoun to complete the sentence: 'She gave the book to _____.'",
+                        options: ["he", "they", "him", "we"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which of these is a collective noun?",
+                        options: ["tree", "book", "flock", "car"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the past tense of 'eat'?",
+                        options: ["eats", "ate", "eaten", "eating"],
+                        correct: 1
+                    },
+                    {
+                        question: "Fill in the blank with a suitable adjective: 'It was a _____ day for a picnic.'",
+                        options: ["slow", "sunny", "loud", "heavy"],
+                        correct: 1
+                    },
+                    {
+                        question: "Identify the verb in the sentence: 'Birds sing sweetly.'",
+                        options: ["Birds", "sing", "sweetly", "the"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which punctuation mark is used at the end of a question?",
+                        options: [".", "!", "?", ","],
+                        correct: 2
+                    }
+                ],
+                // English Level 2
+                [
+                    {
+                        question: "Choose the correct article: 'She saw _____ elephant at the zoo.'",
+                        options: ["a", "an", "the", "no article"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the plural of 'child'?",
+                        options: ["childs", "children", "childes", "childer"],
+                        correct: 1
+                    },
+                    {
+                        question: "Identify the adverb in the sentence: 'He runs quickly.'",
+                        options: ["He", "runs", "quickly", "the"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which type of sentence expresses a strong feeling?",
+                        options: ["Declarative", "Interrogative", "Imperative", "Exclamatory"],
+                        correct: 3
+                    },
+                    {
+                        question: "Complete the sentence with the correct preposition: 'The cat is _____ the table.'",
+                        options: ["on", "under", "in", "from"],
+                        correct: 0
+                    },
+                    {
+                        question: "What is the opposite of 'happy'?",
+                        options: ["joyful", "sad", "merry", "glad"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which word is an antonym of 'start'?",
+                        options: ["begin", "commence", "end", "initiate"],
+                        correct: 2
+                    }
+                ],
+                // English Level 3
+                [
+                    {
+                        question: "Form a meaningful sentence: 'is / The / playing / boy / football.'",
+                        options: ["The boy is playing football.", "Playing the boy is football.", "Football is playing the boy.", "Is the boy playing football."],
+                        correct: 0
+                    },
+                    {
+                        question: "Identify the proper noun: 'My friend lives in Delhi.'",
+                        options: ["friend", "lives", "Delhi", "in"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the comparative form of 'big'?",
+                        options: ["biggest", "biger", "bigger", "most big"],
+                        correct: 2
+                    },
+                    {
+                        question: "Choose the correct collective noun for a group of fish.",
+                        options: ["herd", "pack", "school", "colony"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which sentence uses the present continuous tense correctly?",
+                        options: ["She sings daily.", "She is singing now.", "She sang yesterday.", "She has sung a song."],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the feminine gender of 'nephew'?",
+                        options: ["niece", "daughter", "aunt", "sister"],
+                        correct: 0
+                    },
+                    {
+                        question: "Add a suffix to make an adjective: 'beauty'",
+                        options: ["beautyful", "beautiful", "beautyly", "beautying"],
+                        correct: 1
+                    }
+                ],
+                // English Level 4
+                [
+                    {
+                        question: "Which of these words is a synonym for 'large'?",
+                        options: ["tiny", "small", "huge", "mini"],
+                        correct: 2
+                    },
+                    {
+                        question: "Identify the prepositional phrase: 'The book is on the shelf.'",
+                        options: ["The book", "is on", "on the shelf", "the shelf"],
+                        correct: 2
+                    },
+                    {
+                        question: "Complete the sentence: 'If you work hard, you _____ succeed.'",
+                        options: ["might", "will", "would", "should"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the noun form of 'decide'?",
+                        options: ["deciding", "decision", "decided", "decisive"],
+                        correct: 1
+                    },
+                    {
+                        question: "Choose the sentence with a correct subject-verb agreement.",
+                        options: ["Dogs bark loudly.", "Dog barks loudly.", "Dogs barks loudly.", "Dog bark loudly."],
+                        correct: 0
+                    },
+                    {
+                        question: "Which of the following is a demonstrative pronoun?",
+                        options: ["I", "you", "this", "he"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the superlative form of 'good'?",
+                        options: ["gooder", "better", "best", "most good"],
+                        correct: 2
+                    }
+                ],
+                // English Level 5
+                [
+                    {
+                        question: "Identify the abstract noun: 'Honesty is the best policy.'",
+                        options: ["Honesty", "best", "policy", "is"],
+                        correct: 0
+                    },
+                    {
+                        question: "Which figure of speech compares two unlike things using 'like' or 'as'?",
+                        options: ["Metaphor", "Simile", "Personification", "Hyperbole"],
+                        correct: 1
+                    },
+                    {
+                        question: "Choose the correct punctuation for: 'Wow what a beautiful sunset'",
+                        options: ["Wow, what a beautiful sunset.", "Wow! What a beautiful sunset!", "Wow. What a beautiful sunset.", "Wow? What a beautiful sunset?"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the passive voice of 'The boy broke the window'?",
+                        options: ["The window broke the boy.", "The window was broken by the boy.", "The boy was broken by the window.", "The window breaks the boy."],
+                        correct: 1
+                    },
+                    {
+                        question: "Identify the conjunction in the sentence: 'She is smart and hardworking.'",
+                        options: ["She", "is", "smart", "and"],
+                        correct: 3
+                    },
+                    {
+                        question: "Which word means 'to come together or gather'?",
+                        options: ["disperse", "collect", "scatter", "separate"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the base form of the verb 'swimming'?",
+                        options: ["swam", "swim", "swum", "swims"],
+                        correct: 1
+                    }
+                ]
+            ],
+            hindi: [
+                // Hindi Level 1
+                [
+                    {
+                        question: "संज्ञा के कितने भेद होते हैं?",
+                        options: ["दो", "तीन", "चार", "पांच"],
+                        correct: 3
+                    },
+                    {
+                        question: "इनमें से कौन-सा शब्द 'पक्षी' का पर्यायवाची नहीं है?",
+                        options: ["खग", "विहग", "नभचर", "जलज"],
+                        correct: 3
+                    },
+                    {
+                        question: "लिंग बदलिए: 'लड़का'",
+                        options: ["लड़की", "बालिका", "पुरुष", "स्त्री"],
+                        correct: 0
+                    },
+                    {
+                        question: "वचन बदलिए: 'किताब'",
+                        options: ["किताबें", "किताबों", "किताबियां", "किताबुएँ"],
+                        correct: 0
+                    },
+                    {
+                        question: "सर्वनाम के कितने भेद होते हैं?",
+                        options: ["चार", "पांच", "छह", "सात"],
+                        correct: 2
+                    },
+                    {
+                        question: "'ईमानदार' शब्द का विलोम क्या है?",
+                        options: ["सच्चा", "बेईमान", "अच्छा", "बुरा"],
+                        correct: 1
+                    },
+                    {
+                        question: "क्रिया किसे कहते हैं?",
+                        options: ["नाम वाले शब्द", "काम वाले शब्द", "विशेषता वाले शब्द", "स्थान वाले शब्द"],
+                        correct: 1
+                    }
+                ],
+                // Hindi Level 2
+                [
+                    {
+                        question: "'सुबह' का विलोम शब्द क्या है?",
+                        options: ["शाम", "रात", "सवेरा", "दोपहर"],
+                        correct: 0
+                    },
+                    {
+                        question: "विशेषण के कितने भेद होते हैं?",
+                        options: ["दो", "तीन", "चार", "पांच"],
+                        correct: 2
+                    },
+                    {
+                        question: "'जो चित्र बनाता है' के लिए एक शब्द क्या है?",
+                        options: ["लेखक", "शिक्षक", "चित्रकार", "गायक"],
+                        correct: 2
+                    },
+                    {
+                        question: "मुहावरे 'आँखों का तारा' का अर्थ क्या है?",
+                        options: ["बहुत प्रिय", "बहुत बड़ा", "बहुत दूर", "बहुत महंगा"],
+                        correct: 0
+                    },
+                    {
+                        question: "संज्ञा के स्थान पर प्रयोग होने वाले शब्दों को क्या कहते हैं?",
+                        options: ["विशेषण", "क्रिया", "सर्वनाम", "क्रियाविशेषण"],
+                        correct: 2
+                    },
+                    {
+                        question: "'फूल' शब्द का पर्यायवाची कौन-सा है?",
+                        options: ["पर्वत", "नदी", "पुष्प", "वृक्ष"],
+                        correct: 2
+                    },
+                    {
+                        question: "वाक्य को शुद्ध कीजिए: 'राम खाना खाती है।'",
+                        options: ["राम खाना खाता है।", "राम खाना खाया।", "राम खाना खाएंगे।", "राम खाना खाते।"],
+                        correct: 0
+                    }
+                ],
+                // Hindi Level 3
+                [
+                    {
+                        question: "'पानी' का अनेकार्थी शब्द क्या नहीं है?",
+                        options: ["जल", "इज्जत", "चमक", "पंख"],
+                        correct: 3
+                    },
+                    {
+                        question: "जो पढ़ा-लिखा न हो, उसे क्या कहते हैं?",
+                        options: ["विद्वान", "ज्ञानी", "अनपढ़", "अज्ञानी"],
+                        correct: 2
+                    },
+                    {
+                        question: "'शेर' का स्त्रीलिंग क्या है?",
+                        options: ["शेरनी", "शेरिन", "शेरी", "शेरुन"],
+                        correct: 0
+                    },
+                    {
+                        question: "वाक्य में काम करने वाले को क्या कहते हैं?",
+                        options: ["कर्म", "क्रिया", "कर्ता", "करण"],
+                        correct: 2
+                    },
+                    {
+                        question: "'भारत' एक _____ संज्ञा है।",
+                        options: ["जातिवाचक", "व्यक्तिवाचक", "भाववाचक", "समूहवाचक"],
+                        correct: 1
+                    },
+                    {
+                        question: "'दाँत खट्टे करना' मुहावरे का अर्थ क्या है?",
+                        options: ["दाँत में दर्द होना", "हरा देना", "शिकार करना", "मीठा खाना"],
+                        correct: 1
+                    },
+                    {
+                        question: "संयुक्त अक्षर 'त्र' किन अक्षरों से मिलकर बना है?",
+                        options: ["त् + र", "ट + र", "त + अ", "त + य"],
+                        correct: 0
+                    }
+                ],
+                // Hindi Level 4
+                [
+                    {
+                        question: "इनमें से कौन-सा शब्द विशेषण है?",
+                        options: ["पुस्तक", "सुंदर", "पेड़", "नदी"],
+                        correct: 1
+                    },
+                    {
+                        question: "'अग्नि' का पर्यायवाची शब्द क्या है?",
+                        options: ["जल", "वायु", "आग", "पृथ्वी"],
+                        correct: 2
+                    },
+                    {
+                        question: "कौन-सा वाक्य भूतकाल का उदाहरण है?",
+                        options: ["मैं पढ़ता हूँ।", "मैं पढ़ूँगा।", "मैंने पढ़ा था।", "मैं पढ़ रहा हूँ।"],
+                        correct: 2
+                    },
+                    {
+                        question: "'उपहार' शब्द में कौन-सा उपसर्ग है?",
+                        options: ["उप", "हार", "उ", "पहा"],
+                        correct: 0
+                    },
+                    {
+                        question: "'पढ़ाई' शब्द में कौन-सा प्रत्यय है?",
+                        options: ["पढ़ा", "आई", "ई", "ढाई"],
+                        correct: 1
+                    },
+                    {
+                        question: "सही वर्तनी वाला शब्द चुनिए:",
+                        options: ["अशिर्वाद", "आशिर्वाद", "आशीर्वाद", "असीर्बाद"],
+                        correct: 2
+                    },
+                    {
+                        question: "इनमें से कौन-सा शब्द 'मित्र' का विलोम है?",
+                        options: ["सखा", "शत्रु", "दोस्त", "साथी"],
+                        correct: 1
+                    }
+                ],
+                // Hindi Level 5
+                [
+                    {
+                        question: "'सुबह का नाश्ता' को एक शब्द में क्या कहेंगे?",
+                        options: ["भोजन", "खाना", "जलपान", "रात्रिभोज"],
+                        correct: 2
+                    },
+                    {
+                        question: "कारक के कितने भेद होते हैं?",
+                        options: ["छह", "सात", "आठ", "नौ"],
+                        correct: 2
+                    },
+                    {
+                        question: "कौन-सा वाक्य भविष्य काल का उदाहरण है?",
+                        options: ["वह खेल रहा है।", "वह खेलेगा।", "वह खेला था।", "वह खेलता है।"],
+                        correct: 1
+                    },
+                    {
+                        question: "'गंगा' कौन-सी संज्ञा है?",
+                        options: ["जातिवाचक", "व्यक्तिवाचक", "भाववाचक", "समूहवाचक"],
+                        correct: 1
+                    },
+                    {
+                        question: "सही मुहावरा चुनिए: 'नौ दो ग्यारह होना'",
+                        options: ["भाग जाना", "गिनती करना", "सो जाना", "खेलना"],
+                        correct: 0
+                    },
+                    {
+                        question: "संकेतवाचक सर्वनाम का उदाहरण क्या है?",
+                        options: ["कौन", "कोई", "यह", "आप"],
+                        correct: 2
+                    },
+                    {
+                        question: "'आँखों से देखना' के लिए एक शब्द क्या है?",
+                        options: ["सुनना", "बोलना", "देखना", "छूना"],
+                        correct: 2
+                    }
+                ]
+            ],
+            mathematics: [
+                // Mathematics Level 1
+                [
+                    {
+                        question: "What is the smallest natural number?",
+                        options: ["0", "1", "-1", "10"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the place value of 7 in 7,23,456?",
+                        options: ["7000", "70000", "700000", "700"],
+                        correct: 2
+                    },
+                    {
+                        question: "Solve: $25 + 15 - 10$",
+                        options: ["20", "30", "40", "50"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which of the following is a prime number?",
+                        options: ["4", "9", "11", "15"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is 50% of 100?",
+                        options: ["10", "25", "50", "75"],
+                        correct: 2
+                    },
+                    {
+                        question: "How many hours are there in 2 days?",
+                        options: ["24", "48", "72", "36"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the perimeter of a square with side 5 cm?",
+                        options: ["5 cm", "10 cm", "20 cm", "25 cm"],
+                        correct: 2
+                    }
+                ],
+                // Mathematics Level 2
+                [
+                    {
+                        question: "Find the HCF of 12 and 18.",
+                        options: ["2", "3", "6", "12"],
+                        correct: 2
+                    },
+                    {
+                        question: "Find the LCM of 8 and 12.",
+                        options: ["4", "24", "36", "48"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the value of $3^2 + 4^2$?",
+                        options: ["7", "14", "25", "49"],
+                        correct: 2
+                    },
+                    {
+                        question: "Convert 0.75 into a fraction.",
+                        options: ["1/4", "1/2", "3/4", "7/10"],
+                        correct: 2
+                    },
+                    {
+                        question: "If a dozen eggs cost ₹60, what is the cost of one egg?",
+                        options: ["₹5", "₹6", "₹10", "₹12"],
+                        correct: 0
+                    },
+                    {
+                        question: "What is the sum of the angles in a triangle?",
+                        options: ["90 degrees", "180 degrees", "270 degrees", "360 degrees"],
+                        correct: 1
+                    },
+                    {
+                        question: "How many lines of symmetry does a square have?",
+                        options: ["2", "3", "4", "infinite"],
+                        correct: 2
+                    }
+                ],
+                // Mathematics Level 3
+                [
+                    {
+                        question: "What is the predecessor of the smallest 4-digit number?",
+                        options: ["999", "1000", "1001", "9999"],
+                        correct: 0
+                    },
+                    {
+                        question: "Solve: $x + 5 = 12$. Find $x$.",
+                        options: ["5", "7", "12", "17"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the area of a rectangle with length 8 cm and width 5 cm?",
+                        options: ["13 cm²", "26 cm²", "40 cm²", "64 cm²"],
+                        correct: 2
+                    },
+                    {
+                        question: "Express 2 kg 500 g in grams.",
+                        options: ["250 g", "2050 g", "2500 g", "2000 g"],
+                        correct: 2
+                    },
+                    {
+                        question: "Round off 4,789 to the nearest hundred.",
+                        options: ["4700", "4800", "4790", "5000"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the greatest common factor of 20 and 30?",
+                        options: ["5", "10", "20", "30"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which Roman numeral represents 50?",
+                        options: ["X", "C", "L", "D"],
+                        correct: 2
+                    }
+                ],
+                // Mathematics Level 4
+                [
+                    {
+                        question: "Simplify: $3/4 + 1/4$",
+                        options: ["1/2", "1", "4/8", "2"],
+                        correct: 1
+                    },
+                    {
+                        question: "A car travels 60 km in 1 hour. How far will it travel in 3 hours?",
+                        options: ["60 km", "120 km", "180 km", "240 km"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the successor of the largest 3-digit number?",
+                        options: ["999", "1000", "998", "1001"],
+                        correct: 1
+                    },
+                    {
+                        question: "If $P = 2$, $Q = 3$, find the value of $2P + Q$.",
+                        options: ["5", "7", "8", "9"],
+                        correct: 2
+                    },
+                    {
+                        question: "How many months are there in 5 years?",
+                        options: ["12", "30", "60", "365"],
+                        correct: 2
+                    },
+                    {
+                        question: "Convert 2 hours 30 minutes into minutes.",
+                        options: ["120 minutes", "150 minutes", "180 minutes", "230 minutes"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which of the following is a composite number?",
+                        options: ["2", "7", "13", "21"],
+                        correct: 3
+                    }
+                ],
+                // Mathematics Level 5
+                [
+                    {
+                        question: "What is the decimal equivalent of $1/2$?",
+                        options: ["0.1", "0.2", "0.5", "1.0"],
+                        correct: 2
+                    },
+                    {
+                        question: "Find the average of 10, 20, and 30.",
+                        options: ["10", "20", "25", "30"],
+                        correct: 1
+                    },
+                    {
+                        question: "How many faces does a cube have?",
+                        options: ["4", "6", "8", "12"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the difference between the largest 5-digit number and the smallest 5-digit number?",
+                        options: ["89999", "90000", "99999", "10000"],
+                        correct: 0
+                    },
+                    {
+                        question: "If today is Tuesday, what day will it be after 10 days?",
+                        options: ["Friday", "Saturday", "Sunday", "Monday"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the radius of a circle if its diameter is 14 cm?",
+                        options: ["7 cm", "14 cm", "28 cm", "3.5 cm"],
+                        correct: 0
+                    },
+                    {
+                        question: "Which symbol represents 'less than'?",
+                        options: [">", "<", "=", "≠"],
+                        correct: 1
+                    }
+                ]
+            ],
+            science: [
+                // Science Level 1
+                [
+                    {
+                        question: "Which of these is a source of light?",
+                        options: ["Chair", "Sun", "Water", "Stone"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the main source of energy for the Earth?",
+                        options: ["Moon", "Stars", "Sun", "Volcanoes"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which gas do plants absorb from the atmosphere for photosynthesis?",
+                        options: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the process by which water changes into water vapor?",
+                        options: ["Melting", "Freezing", "Evaporation", "Condensation"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which of these is a non-living thing?",
+                        options: ["Tree", "Bird", "Rock", "Fish"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the unit of length in the SI system?",
+                        options: ["Kilogram", "Second", "Meter", "Liter"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which part of a plant absorbs water and nutrients from the soil?",
+                        options: ["Leaf", "Stem", "Flower", "Root"],
+                        correct: 3
+                    }
+                ],
+                // Science Level 2
+                [
+                    {
+                        question: "What protects our eyes from dust and dirt?",
+                        options: ["Nose", "Eyelids", "Ears", "Tongue"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which animal lays eggs?",
+                        options: ["Cow", "Dog", "Hen", "Cat"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the property of a material that allows light to pass through it?",
+                        options: ["Opaque", "Translucent", "Transparent", "Reflective"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which of these is a renewable source of energy?",
+                        options: ["Coal", "Petroleum", "Solar energy", "Natural gas"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the name of the force that pulls objects towards the Earth?",
+                        options: ["Friction", "Gravity", "Magnetism", "Air resistance"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which organ helps us to breathe?",
+                        options: ["Heart", "Stomach", "Lungs", "Brain"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which state of matter has a definite shape and a definite volume?",
+                        options: ["Solid", "Liquid", "Gas", "Plasma"],
+                        correct: 0
+                    }
+                ],
+                // Science Level 3
+                [
+                    {
+                        question: "What is the main component of air?",
+                        options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Argon"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which planet is known as the 'Red Planet'?",
+                        options: ["Earth", "Mars", "Jupiter", "Venus"],
+                        correct: 1
+                    },
+                    {
+                        question: "What do animals breathe out?",
+                        options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Water vapor"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which of these is a complete food?",
+                        options: ["Rice", "Bread", "Milk", "Potato"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the process of shedding of leaves by trees in autumn?",
+                        options: ["Photosynthesis", "Transpiration", "Defoliation", "Respiration"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which instrument is used to measure temperature?",
+                        options: ["Barometer", "Thermometer", "Ammeter", "Voltmeter"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the largest living animal on Earth?",
+                        options: ["Elephant", "Blue Whale", "Giraffe", "Polar Bear"],
+                        correct: 1
+                    }
+                ],
+                // Science Level 4
+                [
+                    {
+                        question: "Which of these is a good conductor of electricity?",
+                        options: ["Wood", "Plastic", "Copper", "Rubber"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the process by which green plants make their own food?",
+                        options: ["Respiration", "Digestion", "Photosynthesis", "Transpiration"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which part of the body pumps blood?",
+                        options: ["Lungs", "Brain", "Heart", "Kidney"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the natural habitat of a camel?",
+                        options: ["Forest", "Desert", "Ocean", "Mountain"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which of these is a root vegetable?",
+                        options: ["Spinach", "Tomato", "Carrot", "Cabbage"],
+                        correct: 2
+                    },
+                    {
+                        question: "What causes changes in weather?",
+                        options: ["Moon", "Stars", "Sun", "Clouds"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which gas is responsible for the fizz in soft drinks?",
+                        options: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
+                        correct: 2
+                    }
+                ],
+                // Science Level 5
+                [
+                    {
+                        question: "Which type of mirror is used in solar cookers to concentrate sunlight?",
+                        options: ["Plane mirror", "Convex mirror", "Concave mirror", "Spherical mirror"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the main function of the skeleton in the human body?",
+                        options: ["Digestion", "Support and protection", "Breathing", "Pumping blood"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which of these is an example of a mixture?",
+                        options: ["Water", "Salt", "Air", "Sugar"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the liquid part of blood called?",
+                        options: ["Red blood cells", "White blood cells", "Plasma", "Platelets"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which animal undergoes metamorphosis?",
+                        options: ["Dog", "Cow", "Frog", "Cat"],
+                        correct: 2
+                    },
+                    {
+                        question: "What causes the different phases of the moon?",
+                        options: ["Earth's rotation", "Moon's rotation", "Moon's orbit around Earth", "Sun's orbit around Earth"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which component of food helps in body-building?",
+                        options: ["Carbohydrates", "Fats", "Vitamins", "Proteins"],
+                        correct: 3
+                    }
+                ]
+            ],
+            socialscience: [
+                // Social Science Level 1
+                [
+                    {
+                        question: "What is the capital of India?",
+                        options: ["Mumbai", "Kolkata", "New Delhi", "Chennai"],
+                        correct: 2
+                    },
+                    {
+                        question: "Who was the first Prime Minister of India?",
+                        options: ["Mahatma Gandhi", "Sardar Patel", "Jawaharlal Nehru", "Indira Gandhi"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which continent is India a part of?",
+                        options: ["Africa", "Europe", "Asia", "North America"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is a group of people living together in a community called?",
+                        options: ["Family", "School", "Society", "Office"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which desert is located in India?",
+                        options: ["Sahara Desert", "Thar Desert", "Gobi Desert", "Atacama Desert"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the full form of AD in historical dating?",
+                        options: ["After Death", "Anno Domini", "Ancient Dynasty", "Age of Discovery"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which is the largest ocean in the world?",
+                        options: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+                        correct: 3
+                    }
+                ],
+                // Social Science Level 2
+                [
+                    {
+                        question: "Which planet is known as the 'Blue Planet'?",
+                        options: ["Mars", "Earth", "Jupiter", "Venus"],
+                        correct: 1
+                    },
+                    {
+                        question: "The Himalayas are an example of which type of mountains?",
+                        options: ["Volcanic", "Fold", "Block", "Dome"],
+                        correct: 1
+                    },
+                    {
+                        question: "Who invented the wheel?",
+                        options: ["Early Humans", "Egyptians", "Romans", "Greeks"],
+                        correct: 0
+                    },
+                    {
+                        question: "Which is the longest river in India?",
+                        options: ["Yamuna", "Godavari", "Ganga", "Brahmaputra"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the primary function of the Supreme Court of India?",
+                        options: ["Making laws", "Implementing laws", "Interpreting laws", "Collecting taxes"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which of these is a traditional Indian dance form?",
+                        options: ["Ballet", "Hip Hop", "Kathak", "Tap Dance"],
+                        correct: 2
+                    },
+                    {
+                        question: "The imaginary line that divides the Earth into Northern and Southern Hemispheres is called the:",
+                        options: ["Tropic of Cancer", "Equator", "Prime Meridian", "Arctic Circle"],
+                        correct: 1
+                    }
+                ],
+                // Social Science Level 3
+                [
+                    {
+                        question: "What is a map that shows physical features like mountains and rivers called?",
+                        options: ["Political map", "Thematic map", "Physical map", "Road map"],
+                        correct: 2
+                    },
+                    {
+                        question: "Who was the founder of the Mauryan Empire?",
+                        options: ["Ashoka", "Chandragupta Maurya", "Bindusara", "Samudragupta"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which festival is also known as the 'Festival of Lights'?",
+                        options: ["Holi", "Eid", "Diwali", "Christmas"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is a democracy?",
+                        options: ["Rule by a king", "Rule by the army", "Rule by the people", "Rule by a few rich people"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which gas do we breathe out that plants use?",
+                        options: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which ancient civilization built the pyramids?",
+                        options: ["Roman", "Greek", "Egyptian", "Indus Valley"],
+                        correct: 2
+                    },
+                    {
+                        question: "The instrument used to show directions is called a:",
+                        options: ["Telescope", "Microscope", "Compass", "Barometer"],
+                        correct: 2
+                    }
+                ],
+                // Social Science Level 4
+                [
+                    {
+                        question: "What is the lowest layer of the Earth's atmosphere?",
+                        options: ["Stratosphere", "Mesosphere", "Troposphere", "Thermosphere"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which monument was built by Shah Jahan in memory of his wife?",
+                        options: ["Red Fort", "Qutub Minar", "India Gate", "Taj Mahal"],
+                        correct: 3
+                    },
+                    {
+                        question: "What is the term for a vast, flat, treeless Arctic region in which the subsoil is permanently frozen?",
+                        options: ["Desert", "Forest", "Tundra", "Grassland"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the main occupation of people living in villages?",
+                        options: ["Industry", "Services", "Agriculture", "Trade"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which of these is a fundamental right in India?",
+                        options: ["Right to Property", "Right to Education", "Right to Vote", "Right to Work"],
+                        correct: 1
+                    },
+                    {
+                        question: "The process of moving from one place to another for food, shelter, or work is called:",
+                        options: ["Settlement", "Migration", "Tourism", "Exploration"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the study of the Earth's surface and its features called?",
+                        options: ["History", "Civics", "Geography", "Economics"],
+                        correct: 2
+                    }
+                ],
+                // Social Science Level 5
+                [
+                    {
+                        question: "Which period saw the development of agriculture and settled life?",
+                        options: ["Palaeolithic Age", "Mesolithic Age", "Neolithic Age", "Chalcolithic Age"],
+                        correct: 2
+                    },
+                    {
+                        question: "Who wrote 'Discovery of India'?",
+                        options: ["Mahatma Gandhi", "Sardar Patel", "Jawaharlal Nehru", "Dr. B.R. Ambedkar"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which of these is not a component of the government?",
+                        options: ["Legislature", "Executive", "Judiciary", "Press"],
+                        correct: 3
+                    },
+                    {
+                        question: "What is the movement of the Earth around the Sun called?",
+                        options: ["Rotation", "Revolution", "Orbit", "Spin"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which type of government is ruled by a small group of wealthy people?",
+                        options: ["Democracy", "Monarchy", "Oligarchy", "Republic"],
+                        correct: 2
+                    },
+                    {
+                        question: "The period when humans used stone tools is broadly known as the:",
+                        options: ["Iron Age", "Bronze Age", "Stone Age", "Copper Age"],
+                        correct: 2
+                    },
+                    {
+                        question: "Which is the smallest continent in the world?",
+                        options: ["Asia", "Africa", "Australia", "Europe"],
+                        correct: 2
+                    }
+                ]
+            ]
+        };
+
 
         // Make functions globally accessible for HTML onclick attributes
         window.showSubjectSelection = showSubjectSelection;
@@ -668,42 +1633,18 @@
             document.getElementById('subjectSelection').style.display = 'none';
             document.getElementById('quizScreen').style.display = 'flex';
 
-            try {
-                // If questions for this subject are not already loaded, fetch them
-                if (!questionsForSubject[subject]) {
-                    // Construct the JSON file path based on the subject
-                    const jsonFilePath = `${subject}.json`; // e.g., 'mathematics.json'
-                    const response = await fetch(jsonFilePath); // Fetch the JSON data
-                    if (!response.ok) {
-                        throw new Error(`Failed to load questions for ${subject}: ${response.statusText}`);
-                    }
-                    const allQuestions = await response.json(); // Parse the JSON data
-
-                    // Ensure the loaded questions array has enough levels (at least up to TOTAL_LEVELS)
-                    if (allQuestions.length < TOTAL_LEVELS) {
-                        console.warn(`Not enough levels in ${subject}.json. Expected ${TOTAL_LEVELS}, found ${allQuestions.length}. Duplicating levels.`);
-                        // Fallback: If not enough levels, duplicate existing ones
-                        while (allQuestions.length < TOTAL_LEVELS) {
-                            const levelToDuplicate = allQuestions[allQuestions.length % allQuestions.length]; // Cycle through available levels
-                            allQuestions.push([...levelToDuplicate]); // Add a copy of the level
-                        }
-                    } else if (allQuestions.length > TOTAL_LEVELS) {
-                        // If there are more levels than required, trim them
-                        allQuestions.splice(TOTAL_LEVELS);
-                        console.warn(`Too many levels in ${subject}.json. Trimmed to ${TOTAL_LEVELS} levels.`);
-                    }
-                    questionsForSubject[subject] = allQuestions; // Store all questions for the subject
-                }
-                
-                loadLevel(); // Load the first level
-            } catch (error) {
-                console.error("Error loading quiz questions:", error);
-                // Display an error message to the user
-                document.getElementById('questionText').textContent = "Error loading questions. Please try again later.";
-                document.getElementById('optionsContainer').innerHTML = ''; // Clear options
-                clearInterval(timerInterval);
-                document.getElementById('timer').textContent = "--";
+            // No longer fetching from JSON files; questions are directly available
+            // Ensure the loaded questions array has enough levels (at least up to TOTAL_LEVELS)
+            if (!questionsForSubject[subject] || questionsForSubject[subject].length === 0) {
+                 console.error(`No questions defined for subject: ${subject}.`);
+                 document.getElementById('questionText').textContent = "Error loading questions. Please try again later.";
+                 document.getElementById('optionsContainer').innerHTML = ''; // Clear options
+                 clearInterval(timerInterval);
+                 document.getElementById('timer').textContent = "--";
+                 return;
             }
+            
+            loadLevel(); // Load the first level
         }
 
         /**
@@ -769,7 +1710,7 @@
             
             // Validate if questions exist for this level and if there are enough questions
             if (!questionsForLevel || questionsForLevel.length === 0) {
-                console.error(`No questions found for level ${currentLevel} in ${currentSubject}.json. Falling back to first level's questions.`);
+                console.error(`No questions found for level ${currentLevel} in ${currentSubject}. Falling back to first level's questions.`);
                 // Fallback: Use questions from level 1 if current level questions are missing
                 questionsForLevel = questionsForSubject[currentSubject][0];
                 if (!questionsForLevel || questionsForLevel.length === 0) {
@@ -784,7 +1725,7 @@
 
             // Ensure each level has exactly QUESTIONS_PER_LEVEL questions
             if (questionsForLevel.length < QUESTIONS_PER_LEVEL) {
-                 console.warn(`Level ${currentLevel} in ${currentSubject}.json has fewer than ${QUESTIONS_PER_LEVEL} questions. Duplicating questions to fill.`);
+                 console.warn(`Level ${currentLevel} in ${currentSubject} has fewer than ${QUESTIONS_PER_LEVEL} questions. Duplicating questions to fill.`);
                  while (questionsForLevel.length < QUESTIONS_PER_LEVEL) {
                     // Duplicate by cycling through existing questions in the level
                     const questionToDuplicate = questionsForLevel[questionsForLevel.length % questionsForLevel.length];
@@ -958,3 +1899,4 @@
     </script>
 </body>
 </html>
+
