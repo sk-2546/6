@@ -6,6 +6,18 @@
     <title>Shubham President CBSE Class 6 Quiz Game</title>
     <!-- Google Fonts: Dancing Script for English/Cursive, Noto Sans Devanagari for Hindi, Poppins for general/other subjects -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- MathJax for LaTeX rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        // Configure MathJax to use \(...\) for inline math
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            }
+        };
+    </script>
     <style>
         /* Reset basic styles */
         * {
@@ -967,7 +979,7 @@
                 // Hindi Level 5
                 [
                     {
-                        question: "'सुबह का नाश्ता' को एक शब्द में क्या कहेंगे?",
+                        question: "सुबह का नाश्ता' को एक शब्द में क्या कहेंगे?",
                         options: ["भोजन", "खाना", "जलपान", "रात्रिभोज"],
                         correct: 2
                     },
@@ -1017,7 +1029,7 @@
                         correct: 2
                     },
                     {
-                        question: "Solve: $25 + 15 - 10$",
+                        question: "Solve: \\(25 + 15 - 10\\)",
                         options: ["20", "30", "40", "50"],
                         correct: 1
                     },
@@ -1055,13 +1067,13 @@
                         correct: 1
                     },
                     {
-                        question: "What is the value of $3^2 + 4^2$?",
+                        question: "What is the value of \\(3^2 + 4^2\\)?",
                         options: ["7", "14", "25", "49"],
                         correct: 2
                     },
                     {
                         question: "Convert 0.75 into a fraction.",
-                        options: ["1/4", "1/2", "3/4", "7/10"],
+                        options: ["\\(\\frac{1}{4}\\)", "\\(\\frac{1}{2}\\)", "\\(\\frac{3}{4}\\)", "\\(\\frac{7}{10}\\)"],
                         correct: 2
                     },
                     {
@@ -1088,13 +1100,13 @@
                         correct: 0
                     },
                     {
-                        question: "Solve: $x + 5 = 12$. Find $x$.",
+                        question: "Solve for \\(x\\): \\(x + 5 = 12\\)",
                         options: ["5", "7", "12", "17"],
                         correct: 1
                     },
                     {
                         question: "What is the area of a rectangle with length 8 cm and width 5 cm?",
-                        options: ["13 cm²", "26 cm²", "40 cm²", "64 cm²"],
+                        options: ["\\(13\\ \\text{cm}^2\\)", "\\(26\\ \\text{cm}^2\\)", "\\(40\\ \\text{cm}^2\\)", "\\(64\\ \\text{cm}^2\\)"],
                         correct: 2
                     },
                     {
@@ -1121,8 +1133,8 @@
                 // Mathematics Level 4
                 [
                     {
-                        question: "Simplify: $3/4 + 1/4$",
-                        options: ["1/2", "1", "4/8", "2"],
+                        question: "Simplify: \\(\\frac{3}{4} + \\frac{1}{4}\\)",
+                        options: ["\\(\\frac{1}{2}\\)", "1", "\\(\\frac{4}{8}\\)", "2"],
                         correct: 1
                     },
                     {
@@ -1136,9 +1148,9 @@
                         correct: 1
                     },
                     {
-                        question: "If $P = 2$, $Q = 3$, find the value of $2P + Q$.",
+                        question: "If \\(P = 2\\) and \\(Q = 3\\), find the value of \\(2P + Q\\).",
                         options: ["5", "7", "8", "9"],
-                        correct: 2
+                        correct: 1 // Note: The correct answer should be 2*2 + 3 = 7, which is index 1. The original had index 2 (8).
                     },
                     {
                         question: "How many months are there in 5 years?",
@@ -1159,7 +1171,7 @@
                 // Mathematics Level 5
                 [
                     {
-                        question: "What is the decimal equivalent of $1/2$?",
+                        question: "What is the decimal equivalent of \\(\\frac{1}{2}\\)?",
                         options: ["0.1", "0.2", "0.5", "1.0"],
                         correct: 2
                     },
@@ -1181,7 +1193,7 @@
                     {
                         question: "If today is Tuesday, what day will it be after 10 days?",
                         options: ["Friday", "Saturday", "Sunday", "Monday"],
-                        correct: 1
+                        correct: 0 // Note: Tuesday + 10 days = Tuesday + 7 days + 3 days = Friday. Index 0. The original was 1 (Saturday).
                     },
                     {
                         question: "What is the radius of a circle if its diameter is 14 cm?",
@@ -1190,7 +1202,7 @@
                     },
                     {
                         question: "Which symbol represents 'less than'?",
-                        options: [">", "<", "=", "≠"],
+                        options: ["\\(>\\)", "\\(<\\)", "\\(=\\)", "\\(\\neq\\)"],
                         correct: 1
                     }
                 ]
@@ -1757,7 +1769,8 @@
             }
 
             const questionData = questionsForLevel[currentQuestionIndex];
-            document.getElementById('questionText').textContent = questionData.question;
+            const questionTextElement = document.getElementById('questionText');
+            questionTextElement.textContent = questionData.question;
             
             const optionsContainer = document.getElementById('optionsContainer');
             optionsContainer.innerHTML = ''; // Clear previous options
@@ -1771,8 +1784,12 @@
                 optionsContainer.appendChild(button);
             });
 
+            // Rerender MathJax content
+            if (typeof MathJax !== "undefined" && MathJax.typeset) {
+                MathJax.typeset();
+            }
+
             // Apply subject-specific fonts (cursive for Maths, Science, Social Science, English; Hindi for Hindi)
-            const questionTextElement = document.getElementById('questionText');
             if (currentSubject === 'mathematics' || currentSubject === 'science' || currentSubject === 'socialscience' || currentSubject === 'english') {
                 questionTextElement.className = 'question cursive-font'; /* Apply cursive font for Maths, Science, Social Science, and English */
             } else if (currentSubject === 'hindi') {
@@ -1899,4 +1916,3 @@
     </script>
 </body>
 </html>
-
