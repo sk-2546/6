@@ -1,0 +1,1038 @@
+[
+  [
+    {
+      "question": "What is the successor of 9999?",
+      "options": ["9998", "10000", "9990", "10001"],
+      "correct": 1
+    },
+    {
+      "question": "Which is the smallest whole number?",
+      "options": ["1", "0", "-1", "10"],
+      "correct": 1
+    },
+    {
+      "question": "How many lakhs make one crore?",
+      "options": ["10", "100", "1000", "1"],
+      "correct": 0
+    },
+    {
+      "question": "The product of two whole numbers is always a:",
+      "options": ["natural number", "whole number", "integer", "rational number"],
+      "correct": 1
+    },
+    {
+      "question": "What is the place value of 5 in 3,56,789?",
+      "options": ["500", "5000", "50000", "500000"],
+      "correct": 2
+    },
+    {
+      "question": "Which of the following numbers is divisible by 2?",
+      "options": ["345", "781", "902", "111"],
+      "correct": 2
+    },
+    {
+      "question": "What is the perimeter of a square with side 5 cm?",
+      "options": ["10 cm", "20 cm", "25 cm", "15 cm"],
+      "correct": 1
+    }
+  ],
+  [
+    {
+      "question": "Write the numeral for: Seventy-three lakh seventy-five thousand three hundred seven.",
+      "options": ["73,75,307", "7,37,537", "73,75,370", "73,07,537"],
+      "correct": 0
+    },
+    {
+      "question": "Which of the following is an example of an open curve?",
+      "options": ["Circle", "Square", "Triangle", "A letter 'S'"],
+      "correct": 3
+    },
+    {
+      "question": "The smallest prime number is:",
+      "options": ["0", "1", "2", "3"],
+      "correct": 2
+    },
+    {
+      "question": "The sum of a number and 0 is the number itself. This is the ______ property of whole numbers.",
+      "options": ["associative", "commutative", "distributive", "additive identity"],
+      "correct": 3
+    },
+    {
+      "question": "How many integers are between -3 and 2 (excluding -3 and 2)?",
+      "options": ["3", "4", "5", "6"],
+      "correct": 3
+    },
+    {
+      "question": "Convert 3/4 into a decimal.",
+      "options": ["0.3", "0.4", "0.75", "0.25"],
+      "correct": 2
+    },
+    {
+      "question": "What is the value of $20 + (-5)$?",
+      "options": ["15", "25", "-15", "-25"],
+      "correct": 0
+    }
+  ],
+  [
+    {
+      "question": "Estimate 7,85,902 to the nearest lakh.",
+      "options": ["7,00,000", "8,00,000", "7,80,000", "7,90,000"],
+      "correct": 1
+    },
+    {
+      "question": "The largest 4-digit number using digits 9, 0, 5, 2 (without repetition) is:",
+      "options": ["9052", "9502", "9520", "9250"],
+      "correct": 2
+    },
+    {
+      "question": "Which of the following is a composite number?",
+      "options": ["7", "13", "19", "21"],
+      "correct": 3
+    },
+    {
+      "question": "Identify the type of angle: $180^\circ$",
+      "options": ["Acute angle", "Right angle", "Obtuse angle", "Straight angle"],
+      "correct": 3
+    },
+    {
+      "question": "The common factors of 12 and 18 are:",
+      "options": ["[1, 2, 3]", "[1, 2, 3, 6]", "[2, 3, 4]", "[1, 2, 6, 9]"],
+      "correct": 1
+    },
+    {
+      "question": "Subtract: $4.5 - 2.35$",
+      "options": ["2.15", "2.25", "1.15", "1.25"],
+      "correct": 0
+    },
+    {
+      "question": "A cuboid has how many faces?",
+      "options": ["4", "6", "8", "12"],
+      "correct": 1
+    }
+  ],
+  [
+    {
+      "question": "Round off 45,678 to the nearest thousand.",
+      "options": ["45,000", "46,000", "45,700", "40,000"],
+      "correct": 1
+    },
+    {
+      "question": "The smallest 6-digit number formed by digits 0, 1, 2, 3, 4, 5 (without repetition) is:",
+      "options": ["102345", "012345", "123450", "100000"],
+      "correct": 0
+    },
+    {
+      "question": "What is the HCF of 8 and 12?",
+      "options": ["2", "4", "6", "8"],
+      "correct": 1
+    },
+    {
+      "question": "A line segment has:",
+      "options": ["one endpoint", "no endpoints", "two endpoints", "many endpoints"],
+      "correct": 2
+    },
+    {
+      "question": "Which of these is equivalent to $3/5$?",
+      "options": ["6/10", "1/2", "3/10", "5/3"],
+      "correct": 0
+    },
+    {
+      "question": "Identify the property: $5 \times (3 + 2) = 5 \times 3 + 5 \times 2$",
+      "options": ["Commutative", "Associative", "Distributive", "Closure"],
+      "correct": 2
+    },
+    {
+      "question": "If $x + 7 = 15$, what is the value of $x$?",
+      "options": ["7", "8", "9", "22"],
+      "correct": 1
+    }
+  ],
+  [
+    {
+      "question": "What is the difference between the largest 5-digit number and the smallest 5-digit number?",
+      "options": ["89999", "90000", "99999", "9999"],
+      "correct": 0
+    },
+    {
+      "question": "Find the LCM of 6 and 9.",
+      "options": ["3", "18", "36", "54"],
+      "correct": 1
+    },
+    {
+      "question": "How many faces does a triangular prism have?",
+      "options": ["3", "4", "5", "6"],
+      "correct": 2
+    },
+    {
+      "question": "Which of the following fractions is the largest: $1/2, 2/3, 3/4, 1/4$?",
+      "options": ["1/2", "2/3", "3/4", "1/4"],
+      "correct": 2
+    },
+    {
+      "question": "What is the integer that is 4 less than -2?",
+      "options": ["-6", "-2", "2", "6"],
+      "correct": 0
+    },
+    {
+      "question": "The perimeter of a regular hexagon with side 's' is:",
+      "options": ["4s", "5s", "6s", "s^2"],
+      "correct": 2
+    },
+    {
+      "question": "Represent 'five times a number x increased by ten' as an algebraic expression.",
+      "options": ["5x - 10", "x + 5 + 10", "5x + 10", "10x + 5"],
+      "correct": 2
+    }
+  ],
+  [
+    {
+      "question": "The number 1 is:",
+      "options": ["prime", "composite", "neither prime nor composite", "both prime and composite"],
+      "correct": 2
+    },
+    {
+      "question": "In a bar graph, the bars are of ______ width.",
+      "options": ["variable", "unequal", "uniform", "random"],
+      "correct": 2
+    },
+    {
+      "question": "What is the sum of the first five natural numbers?",
+      "options": ["10", "15", "20", "25"],
+      "correct": 1
+    },
+    {
+      "question": "Which type of triangle has all three sides equal?",
+      "options": ["Scalene", "Isosceles", "Equilateral", "Right-angled"],
+      "correct": 2
+    },
+    {
+      "question": "Convert $0.8$ into a fraction in simplest form.",
+      "options": ["8/10", "4/5", "1/8", "2/5"],
+      "correct": 1
+    },
+    {
+      "question": "What is the result of $15 \div (3 \times 5)$?",
+      "options": ["1", "3", "5", "15"],
+      "correct": 0
+    },
+    {
+      "question": "How many lines of symmetry does a rectangle have?",
+      "options": ["0", "1", "2", "4"],
+      "correct": 2
+    }
+  ],
+  [
+    {
+      "question": "The largest 7-digit number is:",
+      "options": ["999999", "1000000", "9999999", "99999999"],
+      "correct": 2
+    },
+    {
+      "question": "The sum of smallest prime number and smallest composite number is:",
+      "options": ["4", "5", "6", "7"],
+      "correct": 2
+    },
+    {
+      "question": "What is the order of rotational symmetry of a square?",
+      "options": ["1", "2", "3", "4"],
+      "correct": 3
+    },
+    {
+      "question": "Which of the following represents 'a quarter to 3' on a clock?",
+      "options": ["2:15", "2:30", "2:45", "3:15"],
+      "correct": 2
+    },
+    {
+      "question": "Add: $12.3 + 5.75$",
+      "options": ["18.05", "18.5", "17.05", "17.5"],
+      "correct": 0
+    },
+    {
+      "question": "If 'p' represents a variable, what is the expression for 'twice p subtracted from 10'?",
+      "options": ["2p - 10", "10 - 2p", "p - 2 + 10", "10 - p/2"],
+      "correct": 1
+    },
+    {
+      "question": "A circle has a diameter of 10 cm. What is its radius?",
+      "options": ["5 cm", "10 cm", "20 cm", "2.5 cm"],
+      "correct": 0
+    }
+  ],
+  [
+    {
+      "question": "Compare: $-10 \text{ ___ } -5$",
+      "options": ["<", ">", "=", "Cannot compare"],
+      "correct": 0
+    },
+    {
+      "question": "The perimeter of a regular pentagon with side 'a' is:",
+      "options": ["4a", "5a", "6a", "a^2"],
+      "correct": 1
+    },
+    {
+      "question": "How many lines can pass through a single point?",
+      "options": ["One", "Two", "Many", "None"],
+      "correct": 2
+    },
+    {
+      "question": "What is the fraction for 'two-thirds'?",
+      "options": ["1/3", "2/3", "3/2", "1/2"],
+      "correct": 1
+    },
+    {
+      "question": "The predecessor of the smallest 5-digit number is:",
+      "options": ["9999", "10000", "99999", "999999"],
+      "correct": 0
+    },
+    {
+      "question": "Which of the following is divisible by 5?",
+      "options": ["123", "456", "780", "901"],
+      "correct": 2
+    },
+    {
+      "question": "If a dozen eggs cost ₹60, what is the cost of one egg?",
+      "options": ["₹5", "₹6", "₹10", "₹12"],
+      "correct": 0
+    }
+  ],
+  [
+    {
+      "question": "What is the sum of $1/4$ and $1/2$?",
+      "options": ["2/6", "3/4", "1/3", "2/4"],
+      "correct": 1
+    },
+    {
+      "question": "In a pictograph, if one symbol represents 5 cars, how many cars do 3 symbols represent?",
+      "options": ["5", "8", "15", "3"],
+      "correct": 2
+    },
+    {
+      "question": "What is the standard form of $40000 + 5000 + 60 + 7$?",
+      "options": ["4567", "45067", "40567", "45607"],
+      "correct": 1
+    },
+    {
+      "question": "Which geometric instrument is used to measure angles?",
+      "options": ["Ruler", "Compass", "Protractor", "Divider"],
+      "correct": 2
+    },
+    {
+      "question": "The LCM of two co-prime numbers is their:",
+      "options": ["sum", "difference", "product", "quotient"],
+      "correct": 2
+    },
+    {
+      "question": "What is $20\%$ of $50$?",
+      "options": ["5", "10", "15", "20"],
+      "correct": 1
+    },
+    {
+      "question": "If $y - 3 = 12$, what is the value of $y$?",
+      "options": ["9", "10", "15", "36"],
+      "correct": 2
+    }
+  ],
+  [
+    {
+      "question": "Arrange in descending order: $1/5, 1/2, 1/10, 1/4$",
+      "options": ["1/2, 1/4, 1/5, 1/10", "1/10, 1/5, 1/4, 1/2", "1/4, 1/5, 1/2, 1/10", "1/2, 1/5, 1/4, 1/10"],
+      "correct": 0
+    },
+    {
+      "question": "A triangle with angles $90^\circ, 45^\circ, 45^\circ$ is a(n):",
+      "options": ["Acute angled triangle", "Obtuse angled triangle", "Right angled isosceles triangle", "Equilateral triangle"],
+      "correct": 2
+    },
+    {
+      "question": "The successor of an integer is always greater than the integer by:",
+      "options": ["0", "1", "-1", "2"],
+      "correct": 1
+    },
+    {
+      "question": "How many diagonals does a quadrilateral have?",
+      "options": ["1", "2", "3", "4"],
+      "correct": 1
+    },
+    {
+      "question": "What is the greatest common factor (GCF) of 20 and 30?",
+      "options": ["5", "10", "20", "30"],
+      "correct": 1
+    },
+    {
+      "question": "The perimeter of a rectangle with length 10 cm and width 5 cm is:",
+      "options": ["15 cm", "25 cm", "30 cm", "50 cm"],
+      "correct": 2
+    },
+    {
+      "question": "What is the value of $5^2$?",
+      "options": ["7", "10", "25", "32"],
+      "correct": 2
+    }
+  ],
+  [
+    {
+      "question": "The Roman numeral for 49 is:",
+      "options": ["XLIX", "IL", "XIL", "LI"],
+      "correct": 0
+    },
+    {
+      "question": "What is the area of a square plot of side 10 m?",
+      "options": ["10 sq m", "40 sq m", "100 sq m", "20 sq m"],
+      "correct": 2
+    },
+    {
+      "question": "Which of these is a proper fraction?",
+      "options": ["7/5", "3/2", "9/10", "5/4"],
+      "correct": 2
+    },
+    {
+      "question": "If a line segment PQ is 7 cm long, how many line segments of 1 cm can be cut from it?",
+      "options": ["1", "7", "0", "infinite"],
+      "correct": 1
+    },
+    {
+      "question": "Which of the following is a pair of twin primes?",
+      "options": ["(2,3)", "(3,5)", "(5,7)", "(7,11)"],
+      "correct": 1
+    },
+    {
+      "question": "The ratio of 50 paise to ₹1 is:",
+      "options": ["1:1", "1:2", "2:1", "1:50"],
+      "correct": 1
+    },
+    {
+      "question": "What is the circumference of a circle with radius 7 cm (use $\pi = 22/7$)?",
+      "options": ["22 cm", "44 cm", "14 cm", "7 cm"],
+      "correct": 1
+    }
+  ],
+  [
+    {
+      "question": "What is the sum of all integers between -5 and 3 (excluding -5 and 3)?",
+      "options": ["-5", "-3", "0", "1"],
+      "correct": 0
+    },
+    {
+      "question": "Which of the following alphabets has horizontal symmetry?",
+      "options": ["A", "B", "C", "D"],
+      "correct": 1
+    },
+    {
+      "question": "A prism has a base and top that are:",
+      "options": ["circular", "triangular", "polygonal and congruent", "square"],
+      "correct": 2
+    },
+    {
+      "question": "The lowest common multiple (LCM) of 4, 6 and 8 is:",
+      "options": ["12", "16", "24", "48"],
+      "correct": 2
+    },
+    {
+      "question": "Convert 0.05 into percentage.",
+      "options": ["0.05%", "0.5%", "5%", "50%"],
+      "correct": 2
+    },
+    {
+      "question": "If $3x = 21$, what is the value of $x$?",
+      "options": ["3", "7", "18", "24"],
+      "correct": 1
+    },
+    {
+      "question": "The range of data $10, 15, 20, 5, 25$ is:",
+      "options": ["5", "10", "15", "20"],
+      "correct": 3
+    }
+  ],
+  [
+    {
+      "question": "What is the value of $|-10|$?",
+      "options": ["-10", "0", "10", "Cannot be determined"],
+      "correct": 2
+    },
+    {
+      "question": "Which of these is not a polygon?",
+      "options": ["Triangle", "Square", "Circle", "Pentagon"],
+      "correct": 2
+    },
+    {
+      "question": "The estimated product of $38 \times 62$ (rounding to nearest tens) is:",
+      "options": ["2000", "2400", "1800", "2500"],
+      "correct": 1
+    },
+    {
+      "question": "The reciprocal of $2/3$ is:",
+      "options": ["2/3", "3/2", "-2/3", "-3/2"],
+      "correct": 1
+    },
+    {
+      "question": "How many millimeters are in 1 meter?",
+      "options": ["10", "100", "1000", "10000"],
+      "correct": 2
+    },
+    {
+      "question": "If the sum of two angles is $90^\circ$, they are called:",
+      "options": ["Supplementary angles", "Complementary angles", "Adjacent angles", "Linear pair"],
+      "correct": 1
+    },
+    {
+      "question": "The number of edges in a cube is:",
+      "options": ["6", "8", "12", "16"],
+      "correct": 2
+    }
+  ],
+  [
+    {
+      "question": "What is the sum of $1/3, 1/6, 1/2$?",
+      "options": ["1", "5/6", "2/3", "7/6"],
+      "correct": 0
+    },
+    {
+      "question": "The area of a rectangle is $24 \text{ sq cm}$. If its length is $6 \text{ cm}$, what is its width?",
+      "options": ["3 cm", "4 cm", "5 cm", "6 cm"],
+      "correct": 1
+    },
+    {
+      "question": "Which of the following is divisible by 3 and 4?",
+      "options": ["18", "24", "30", "32"],
+      "correct": 1
+    },
+    {
+      "question": "A line that intersects two or more lines at different points is called a:",
+      "options": ["Parallel line", "Perpendicular line", "Transversal line", "Ray"],
+      "correct": 2
+    },
+    {
+      "question": "If $x/5 = 4$, what is the value of $x$?",
+      "options": ["0.8", "5", "20", "40"],
+      "correct": 2
+    },
+    {
+      "question": "The integer that is 7 more than -3 is:",
+      "options": ["-10", "-4", "4", "10"],
+      "correct": 2
+    },
+    {
+      "question": "What is the smallest number that is a multiple of both 6 and 8?",
+      "options": ["12", "16", "24", "48"],
+      "correct": 2
+    }
+  ],
+  [
+    {
+      "question": "What is the median of the data: $2, 5, 8, 1, 9, 4, 7$?",
+      "options": ["1", "5", "7", "9"],
+      "correct": 1
+    },
+    {
+      "question": "The perimeter of a triangle with sides 3 cm, 4 cm, 5 cm is:",
+      "options": ["9 cm", "10 cm", "12 cm", "15 cm"],
+      "correct": 2
+    },
+    {
+      "question": "What is the value of $10 - (-5)$?",
+      "options": ["-15", "-5", "5", "15"],
+      "correct": 3
+    },
+    {
+      "question": "Which of these is a reflection symmetry?",
+      "options": ["Rotation", "Translation", "Flip", "Glide"],
+      "correct": 2
+    },
+    {
+      "question": "Write $0.625$ as a fraction.",
+      "options": ["625/1000", "5/8", "1/8", "3/4"],
+      "correct": 1
+    },
+    {
+      "question": "If $20\%$ of a number is 10, what is the number?",
+      "options": ["20", "50", "100", "200"],
+      "correct": 1
+    },
+    {
+      "question": "How many minutes are in $2.5$ hours?",
+      "options": ["120", "150", "180", "200"],
+      "correct": 1
+    }
+  ],
+  [
+    {
+      "question": "The greatest prime number less than 20 is:",
+      "options": ["17", "19", "23", "13"],
+      "correct": 1
+    },
+    {
+      "question": "A circle has infinite lines of symmetry passing through its:",
+      "options": ["centre", "circumference", "diameter", "radius"],
+      "correct": 0
+    },
+    {
+      "question": "Which of the following is a representation of an angle?",
+      "options": ["Line", "Ray", "Two rays with a common endpoint", "Line segment"],
+      "correct": 2
+    },
+    {
+      "question": "What is the value of $(-8) \times (-5)$?",
+      "options": ["-40", "-13", "13", "40"],
+      "correct": 3
+    },
+    {
+      "question": "If a packet of biscuits costs ₹15, what is the cost of 5 packets?",
+      "options": ["₹30", "₹45", "₹60", "₹75"],
+      "correct": 3
+    },
+    {
+      "question": "The value of $2x - 3$ if $x=5$ is:",
+      "options": ["7", "10", "13", "2"],
+      "correct": 0
+    },
+    {
+      "question": "The area of a triangle with base 10 cm and height 4 cm is:",
+      "options": ["10 sq cm", "20 sq cm", "40 sq cm", "80 sq cm"],
+      "correct": 1
+    }
+  ],
+  [
+    {
+      "question": "What is the missing number in the sequence: $1, 4, 9, ___, 25, 36$?",
+      "options": ["12", "16", "20", "24"],
+      "correct": 1
+    },
+    {
+      "question": "What is the value of $1/2 \times 3/4$?",
+      "options": ["3/8", "4/6", "1/4", "1/2"],
+      "correct": 0
+    },
+    {
+      "question": "Which of the following is not a unit of measurement for length?",
+      "options": ["Meter", "Kilogram", "Centimeter", "Millimeter"],
+      "correct": 1
+    },
+    {
+      "question": "The ratio of 10 cm to 1 meter is:",
+      "options": ["1:1", "1:10", "10:1", "1:100"],
+      "correct": 1
+    },
+    {
+      "question": "A right angle is formed when two lines are:",
+      "options": ["Parallel", "Perpendicular", "Intersecting", "Skew"],
+      "correct": 1
+    },
+    {
+      "question": "The smallest integer is:",
+      "options": ["0", "1", "Cannot be determined", "-1"],
+      "correct": 2
+    },
+    {
+      "question": "If 'k' is a variable, 'k divided by 7' can be written as:",
+      "options": ["k/7", "7/k", "k-7", "k+7"],
+      "correct": 0
+    }
+  ],
+  [
+    {
+      "question": "The area of a classroom floor is $100 \text{ sq meters}$. If its length is $10 \text{ meters}$, what is its width?",
+      "options": ["5 m", "10 m", "15 m", "20 m"],
+      "correct": 1
+    },
+    {
+      "question": "What is the fraction equivalent to $0.4$?",
+      "options": ["1/4", "2/5", "4/10", "1/2"],
+      "correct": 1
+    },
+    {
+      "question": "The common multiple of 3 and 5 is:",
+      "options": ["8", "10", "15", "20"],
+      "correct": 2
+    },
+    {
+      "question": "Which of these is a 3D shape?",
+      "options": ["Square", "Rectangle", "Circle", "Cylinder"],
+      "correct": 3
+    },
+    {
+      "question": "What is the value of $(-15) - (-5)$?",
+      "options": ["-20", "-10", "10", "20"],
+      "correct": 1
+    },
+    {
+      "question": "If $x$ is a natural number, then $x+1$ is its:",
+      "options": ["predecessor", "successor", "factor", "multiple"],
+      "correct": 1
+    },
+    {
+      "question": "How many days are in 3 weeks and 2 days?",
+      "options": ["21", "23", "25", "28"],
+      "correct": 1
+    }
+  ],
+  [
+    {
+      "question": "The smallest 4-digit number is:",
+      "options": ["1000", "999", "1001", "1111"],
+      "correct": 0
+    },
+    {
+      "question": "Which number is a factor of every number?",
+      "options": ["0", "1", "2", "Any prime number"],
+      "correct": 1
+    },
+    {
+      "question": "A complete angle measures:",
+      "options": ["$90^\circ$", "$180^\circ$", "$270^\circ$", "$360^\circ$"],
+      "correct": 3
+    },
+    {
+      "question": "If a number is divisible by 2 and 3, it is also divisible by:",
+      "options": ["5", "6", "7", "8"],
+      "correct": 1
+    },
+    {
+      "question": "What is the value of $0.7 \times 0.2$?",
+      "options": ["1.4", "0.14", "0.014", "14.0"],
+      "correct": 1
+    },
+    {
+      "question": "The perimeter of a circle is called its:",
+      "options": ["Area", "Diameter", "Circumference", "Radius"],
+      "correct": 2
+    },
+    {
+      "question": "If 1 kg of apples costs ₹120, what is the cost of 250 grams of apples?",
+      "options": ["₹20", "₹30", "₹40", "₹60"],
+      "correct": 1
+    }
+  ],
+  [
+    {
+      "question": "What is the greatest 3-digit number divisible by 5?",
+      "options": ["990", "995", "1000", "999"],
+      "correct": 1
+    },
+    {
+      "question": "Which of these is a pair of perpendicular lines?",
+      "options": ["Railroad tracks", "Adjacent sides of a square", "Hands of a clock at 6 o'clock", "Lines on a map"],
+      "correct": 1
+    },
+    {
+      "question": "What is the sum of the angles in a triangle?",
+      "options": ["$90^\circ$", "$180^\circ$", "$270^\circ$", "$360^\circ$"],
+      "correct": 1
+    },
+    {
+      "question": "What is the value of $(-20) + 15$?",
+      "options": ["-35", "-5", "5", "35"],
+      "correct": 1
+    },
+    {
+      "question": "The distance covered along the boundary of a closed figure is called its:",
+      "options": ["Area", "Perimeter", "Volume", "Diagonal"],
+      "correct": 1
+    },
+    {
+      "question": "A variable can take:",
+      "options": ["Only one value", "Only two values", "No values", "Various values"],
+      "correct": 3
+    },
+    {
+      "question": "If $1 \text{ foot} = 12 \text{ inches}$, how many inches are in $3 \text{ feet}$?",
+      "options": ["24", "36", "48", "60"],
+      "correct": 1
+    }
+  ],
+  [
+    {
+      "question": "What is the expanded form of 7,08,005?",
+      "options": ["700000+8000+5", "70000+800+5", "700000+80000+5", "700000+800+5"],
+      "correct": 0
+    },
+    {
+      "question": "Which of these is an example of an improper fraction?",
+      "options": ["3/4", "5/6", "7/2", "1/2"],
+      "correct": 2
+    },
+    {
+      "question": "A ray has:",
+      "options": ["no endpoints", "one endpoint", "two endpoints", "infinite endpoints"],
+      "correct": 1
+    },
+    {
+      "question": "The number 0 is a(n):",
+      "options": ["natural number", "integer", "whole number", "both b and c"],
+      "correct": 3
+    },
+    {
+      "question": "What is the simplest form of the ratio 15:25?",
+      "options": ["1:2", "3:5", "5:3", "2:3"],
+      "correct": 1
+    },
+    {
+      "question": "The value of an expression $5 + 2x$ if $x = 10$ is:",
+      "options": ["15", "25", "30", "17"],
+      "correct": 2
+    },
+    {
+      "question": "If the perimeter of a regular octagon is 40 cm, what is the length of one side?",
+      "options": ["4 cm", "5 cm", "6 cm", "8 cm"],
+      "correct": 1
+    }
+  ],
+  [
+    {
+      "question": "What is the HCF of 15, 20 and 30?",
+      "options": ["1", "3", "5", "10"],
+      "correct": 2
+    },
+    {
+      "question": "Which of these is a unit of capacity?",
+      "options": ["Gram", "Meter", "Liter", "Second"],
+      "correct": 2
+    },
+    {
+      "question": "The opposite of gaining 100 rupees is:",
+      "options": ["Losing 100 rupees", "Gaining 50 rupees", "Losing 200 rupees", "No change"],
+      "correct": 0
+    },
+    {
+      "question": "A cylinder has how many circular faces?",
+      "options": ["1", "2", "3", "4"],
+      "correct": 1
+    },
+    {
+      "question": "Convert $1.25$ into a mixed fraction.",
+      "options": ["$1 \frac{1}{4}$", "$1 \frac{1}{2}$", "$1 \frac{3}{4}$", "$1 \frac{1}{5}$"],
+      "correct": 0
+    },
+    {
+      "question": "If $x/3 = 6$, then $x$ is equal to:",
+      "options": ["2", "3", "18", "9"],
+      "correct": 2
+    },
+    {
+      "question": "What is the name of a triangle with angles $60^\circ, 60^\circ, 60^\circ$?",
+      "options": ["Right-angled", "Isosceles", "Equilateral", "Scalene"],
+      "correct": 2
+    }
+  ],
+  [
+    {
+      "question": "What is the place value of 9 in 23.459?",
+      "options": ["9 tenths", "9 hundredths", "9 thousandths", "9 ones"],
+      "correct": 2
+    },
+    {
+      "question": "The number of vertices in a cone is:",
+      "options": ["0", "1", "2", "3"],
+      "correct": 1
+    },
+    {
+      "question": "Which pair of numbers is co-prime?",
+      "options": ["(2,4)", "(3,9)", "(7,14)", "(8,15)"],
+      "correct": 3
+    },
+    {
+      "question": "What is the product of $0.5 \times 100$?",
+      "options": ["0.05", "5", "50", "500"],
+      "correct": 2
+    },
+    {
+      "question": "If 5 pencils cost ₹25, what is the cost of 1 pencil?",
+      "options": ["₹3", "₹4", "₹5", "₹6"],
+      "correct": 2
+    },
+    {
+      "question": "What is the area of a triangle with base 6 cm and height 8 cm?",
+      "options": ["24 sq cm", "48 sq cm", "14 sq cm", "28 sq cm"],
+      "correct": 0
+    },
+    {
+      "question": "The algebraic expression for 'sum of a and b subtracted from 10' is:",
+      "options": ["a+b-10", "10-(a+b)", "(a+b)+10", "10-a+b"],
+      "correct": 1
+    }
+  ],
+  [
+    {
+      "question": "How many seconds are in $1/4$ of an hour?",
+      "options": ["15", "150", "900", "3600"],
+      "correct": 2
+    },
+    {
+      "question": "Which of these is a multiple of 7?",
+      "options": ["20", "28", "30", "36"],
+      "correct": 1
+    },
+    {
+      "question": "What is the value of $(-1) + (-2) + (-3)$?",
+      "options": ["-6", "-5", "6", "0"],
+      "correct": 0
+    },
+    {
+      "question": "A line segment AB is twice the length of line segment CD. If CD is 5 cm, what is the length of AB?",
+      "options": ["5 cm", "10 cm", "2.5 cm", "15 cm"],
+      "correct": 1
+    },
+    {
+      "question": "The perimeter of a square is 36 cm. What is the length of its side?",
+      "options": ["6 cm", "9 cm", "12 cm", "18 cm"],
+      "correct": 1
+    },
+    {
+      "question": "What type of angle is greater than $90^\circ$ but less than $180^\circ$?",
+      "options": ["Acute", "Obtuse", "Right", "Reflex"],
+      "correct": 1
+    },
+    {
+      "question": "If $x$ represents the number of boys and $y$ represents the number of girls, then the total number of students is:",
+      "options": ["x - y", "x / y", "x + y", "x * y"],
+      "correct": 2
+    }
+  ],
+  [
+    {
+      "question": "Estimate the sum of 52 and 87 to the nearest tens.",
+      "options": ["130", "140", "150", "160"],
+      "correct": 1
+    },
+    {
+      "question": "Which of the following is the smallest fraction?",
+      "options": ["1/2", "1/3", "1/4", "1/5"],
+      "correct": 3
+    },
+    {
+      "question": "The number 10,000 in words (International System) is:",
+      "options": ["Ten thousand", "One lakh", "One million", "Hundred thousand"],
+      "correct": 0
+    },
+    {
+      "question": "A triangle having two sides equal is called:",
+      "options": ["Scalene", "Isosceles", "Equilateral", "Right-angled"],
+      "correct": 1
+    },
+    {
+      "question": "What is the value of $0.007 \times 1000$?",
+      "options": ["0.7", "7", "70", "700"],
+      "correct": 1
+    },
+    {
+      "question": "How many faces does a sphere have?",
+      "options": ["0", "1", "2", "Infinite"],
+      "correct": 1
+    },
+    {
+      "question": "If $p + 12 = 30$, what is the value of $p$?",
+      "options": ["18", "20", "22", "42"],
+      "correct": 0
+    }
+  ],
+  [
+    {
+      "question": "The sum of smallest prime and smallest odd composite number is:",
+      "options": ["6", "8", "10", "12"],
+      "correct": 2
+    },
+    {
+      "question": "How many minutes are there between 7:30 AM and 8:15 AM?",
+      "options": ["30", "40", "45", "50"],
+      "correct": 2
+    },
+    {
+      "question": "What is the median of $10, 5, 20, 15, 25, 30$?",
+      "options": ["15", "17.5", "20", "25"],
+      "correct": 1
+    },
+    {
+      "question": "Which of these is a polyhedron?",
+      "options": ["Cone", "Cylinder", "Sphere", "Cube"],
+      "correct": 3
+    },
+    {
+      "question": "What is the difference between $5.8$ and $3.25$?",
+      "options": ["2.5", "2.55", "3.55", "3.45"],
+      "correct": 1
+    },
+    {
+      "question": "If a square has an area of 64 sq cm, what is the length of its side?",
+      "options": ["4 cm", "8 cm", "16 cm", "32 cm"],
+      "correct": 1
+    },
+    {
+      "question": "What is the result of $10 \div 2 + 3 \times 4$?",
+      "options": ["17", "22", "26", "32"],
+      "correct": 1
+    }
+  ],
+  [
+    {
+      "question": "The total number of factors of 12 is:",
+      "options": ["4", "5", "6", "8"],
+      "correct": 2
+    },
+    {
+      "question": "What is the value of $20\%$ of $300$?",
+      "options": ["30", "40", "50", "60"],
+      "correct": 3
+    },
+    {
+      "question": "Convert $1/8$ into a decimal.",
+      "options": ["0.125", "0.25", "0.5", "0.8"],
+      "correct": 0
+    },
+    {
+      "question": "Which of these figures has only one line of symmetry?",
+      "options": ["Square", "Rectangle", "Isosceles triangle", "Equilateral triangle"],
+      "correct": 2
+    },
+    {
+      "question": "The ratio of 1 meter to 50 cm is:",
+      "options": ["1:1", "1:2", "2:1", "1:5"],
+      "correct": 2
+    },
+    {
+      "question": "If the length of a side of a cube is 5 cm, its volume is:",
+      "options": ["25 cubic cm", "125 cubic cm", "15 cubic cm", "100 cubic cm"],
+      "correct": 1
+    },
+    {
+      "question": "What is the smallest number which when divided by 6, 9 and 12 leaves no remainder?",
+      "options": ["18", "24", "36", "48"],
+      "correct": 2
+    }
+  ],
+  [
+    {
+      "question": "How many pairs of parallel lines are there in a rectangle?",
+      "options": ["1", "2", "3", "4"],
+      "correct": 1
+    },
+    {
+      "question": "What is the value of $1000 - 999 + 1$?",
+      "options": ["0", "1", "2", "100"],
+      "correct": 2
+    },
+    {
+      "question": "The sum of a number and its additive inverse is always:",
+      "options": ["1", "-1", "0", "the number itself"],
+      "correct": 2
+    },
+    {
+      "question": "Which of these is a non-standard unit of measurement?",
+      "options": ["Meter", "Handspan", "Kilogram", "Liter"],
+      "correct": 1
+    },
+    {
+      "question": "If the temperature is $-5^\circ \text{C}$ and it drops by $3^\circ \text{C}$, what is the new temperature?",
+      "options": ["$-2^\circ \text{C}$", "$-8^\circ \text{C}$", "$2^\circ \text{C}$", "$8^\circ \text{C}$"],
+      "correct": 1
+    },
+    {
+      "question": "The data showing population of a city over years can be best represented by a:",
+      "options": ["Bar graph", "Pictograph", "Tally marks", "Line graph"],
+      "correct": 3
+    },
+    {
+      "question": "What is the perimeter of a rectangle with length 'l' and width 'w'?",
+      "options": ["l + w", "l * w", "2(l + w)", "l + w + 2"],
+      "correct": 2
+    }
+  ]
+]

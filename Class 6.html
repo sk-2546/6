@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham President CBSE Class 6 Quiz Game</title>
+    <!-- Google Fonts: Dancing Script for English/Cursive, Noto Sans Devanagari for Hindi, Poppins for general/other subjects -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling: background gradient, centering content, responsive layout */
+        body {
+            font-family: 'Poppins', sans-serif; /* Default font for all text */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Main game container styling */
+        .game-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            min-height: 600px; /* Minimum height for the container */
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            display: flex; /* Use flexbox for internal layout */
+            flex-direction: column; /* Stack content vertically */
+            justify-content: space-between; /* Distribute space between header and main content */
+        }
+
+        /* Styles for the main header (now only for the quiz screens, if any) */
+        /* Note: The main title is now part of the start-screen */
+        .header {
+            /* This header now serves as a placeholder if needed for subsequent screens */
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+            min-height: 50px; /* Ensure some height */
+            display: none; /* Hidden by default, can be shown by JS for quiz screens */
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Start screen styling - positioned to cover the whole game container */
+        .start-screen {
+            position: absolute; /* Position absolutely to cover the container */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex; /* Initially show as flex */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95); /* Match container background for seamless transition */
+            border-radius: 20px; /* Inherit border-radius from game-container */
+            z-index: 10; /* Ensure it's on top */
+            transition: opacity 0.5s ease-out; /* Smooth fade out transition */
+        }
+
+        /* Styles for the title specifically on the start screen */
+        .start-screen .start-title {
+            font-size: clamp(1.8rem, 5vw, 3rem); /* Large and responsive font size */
+            font-weight: 700;
+            margin-bottom: 50px; /* More space between title and button */
+            color: #333; /* Darker color for contrast on white background */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: fadeInDown 1s ease-out; /* Animation for the title */
+        }
+
+        /* Keyframe animation for title */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Start button styling */
+        .start-button {
+            background: linear-gradient(135deg, #00b894, #00a085);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            animation: pulseButton 1.5s infinite ease-in-out; /* Pulsing animation for button */
+        }
+
+        .start-button:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            animation: none; /* Stop pulsing on hover */
+        }
+
+        @keyframes pulseButton {
+            0% { transform: scale(1); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+            50% { transform: scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+            100% { transform: scale(1); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        }
+
+        /* Subject selection, quiz, and result screens are hidden by default */
+        .subject-selection, .quiz-screen, .result-screen {
+            display: none; /* Hidden by default, managed by JS */
+            padding: 40px;
+            text-align: center;
+            flex-grow: 1; /* Allows the screen to take up available vertical space */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Subject grid for layout */
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+            width: 100%; /* Ensure grid takes full width */
+            max-width: 600px; /* Limit grid width for better appearance */
+        }
+
+        /* Individual subject card styling */
+        .subject-card {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            border: none;
+            border-radius: 15px;
+            padding: 30px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex; /* Flex for content within card */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Hover effects for subject cards */
+        .subject-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Shimmer effect for subject cards on hover */
+        .subject-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+            opacity: 0;
+        }
+
+        .subject-card:hover::before {
+            animation: shimmer 0.8s ease-in-out;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+        }
+
+        /* Subject card text styling */
+        .subject-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .subject-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Subject-specific fonts */
+        .english-font { font-family: 'Dancing Script', cursive; }
+        .hindi-font { font-family: 'Noto Sans Devanagari', sans-serif; }
+        /* Cursive font for Maths, Science, Social Science questions */
+        .cursive-font { font-family: 'Dancing Script', cursive; }
+
+        /* Quiz screen styling */
+        .quiz-screen {
+            padding: 30px;
+            flex-grow: 1; /* Allow it to take available space */
+            flex-direction: column;
+        }
+
+        /* Quiz header (level, timer, back button) */
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+            gap: 15px; /* Spacing between items */
+        }
+
+        /* Level info badge */
+        .level-info {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+
+        /* Timer badge */
+        .timer {
+            background: linear-gradient(135deg, #ff7675, #e17055);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            animation: pulse 1s infinite; /* Pulsing animation */
+            white-space: nowrap;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Question container styling */
+        .question-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: slideIn 0.5s ease-out; /* Slide in animation */
+            flex-grow: 1; /* Allow question container to grow */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Question text styling - responsive font size */
+        .question {
+            /* Responsive font size: minimum 1.5rem, preferred 4vw, maximum 2.5rem */
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 25px;
+            color: #333;
+            line-height: 1.6;
+            text-align: center; /* Center the question text */
+        }
+
+        /* Options container styling */
+        .options {
+            display: grid;
+            gap: 15px;
+        }
+
+        /* Individual option button styling - responsive font size */
+        .option {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            /* Responsive font size: minimum 1.1rem, preferred 2.5vw, maximum 1.5rem */
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center; /* Center option text */
+        }
+
+        /* Option hover effect */
+        .option:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Correct answer styling */
+        .option.correct {
+            background: linear-gradient(135deg, #00b894, #00a085);
+            animation: correctAnswer 0.6s ease;
+        }
+
+        /* Incorrect answer styling */
+        .option.incorrect {
+            background: linear-gradient(135deg, #e17055, #d63031);
+            animation: incorrectAnswer 0.6s ease;
+        }
+
+        /* Animations for correct/incorrect answers */
+        @keyframes correctAnswer {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); background: #00ff00; }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes incorrectAnswer {
+            0% { transform: scale(1); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Back button styling */
+        .back-btn {
+            background: linear-gradient(135deg, #636e72, #2d3436);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Result screen styling */
+        .result-screen {
+            padding: 40px;
+            text-align: center;
+            flex-grow: 1;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Result card styling */
+        .result-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: bounceIn 0.8s ease; /* Bounce in animation */
+            width: 100%;
+            max-width: 500px;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Result icon (emoji) styling */
+        .result-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .pass { color: #00b894; } /* Green for pass */
+        .fail { color: #e17055; } /* Red for fail */
+
+        /* Result text styling */
+        .result-text {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Result score styling */
+        .result-score {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* Continue and Retry button styling */
+        .continue-btn, .retry-btn {
+            background: linear-gradient(135deg, #00b894, #00a085);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .retry-btn {
+            background: linear-gradient(135deg, #e17055, #d63031); /* Different gradient for retry */
+        }
+
+        .continue-btn:hover, .retry-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Progress bar styling */
+        .progress-bar {
+            background: #e0e0e0;
+            height: 8px;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #00b894, #00a085);
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            /* Animation for progress bar shimmer */
+            background-size: 200% 100%; /* For shimmer effect */
+            animation: shimmerProgress 2s infinite linear; /* Continuous shimmer */
+        }
+
+        @keyframes shimmerProgress {
+            0% { background-position: -100% 0; }
+            100% { background-position: 100% 0; }
+        }
+
+        /* Floating particles for background effect */
+        .floating-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Do not interfere with clicks */
+            z-index: -1; /* Behind other content */
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out; /* Floating animation */
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.5; }
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            .game-container {
+                width: 95%;
+                margin: 10px;
+                min-height: unset; /* Allow height to adjust */
+            }
+            
+            .start-screen .start-title {
+                font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+            }
+            
+            .start-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+
+            .quiz-header {
+                flex-direction: column; /* Stack header items vertically */
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .level-info, .timer, .back-btn {
+                width: 100%; /* Full width for header elements */
+                text-align: center;
+                margin: 0; /* Remove extra margin */
+            }
+
+            .question {
+                font-size: clamp(1.3rem, 3.8vw, 2.2rem); /* Adjust clamp for smaller screens */
+            }
+            
+            .option {
+                font-size: clamp(1rem, 2.3vw, 1.3rem); /* Adjust clamp for smaller screens */
+                padding: 12px 20px;
+            }
+            
+            .subject-grid {
+                grid-template-columns: 1fr; /* Single column on small screens */
+            }
+            
+            .subject-selection {
+                padding: 20px;
+            }
+            
+            .result-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="floating-particles"></div>
+        
+        <!-- Start Screen - Now includes the main title and is initially visible -->
+        <div class="start-screen" id="startScreen">
+            <!-- Main title of the quiz, with animation -->
+            <h1 class="start-title">Shubham President CBSE Class 6 Quiz Game</h1>
+            <!-- Button to start the quiz and proceed to subject selection -->
+            <button class="start-button" onclick="showSubjectSelection()">Start Quiz</button>
+        </div>
+
+        <!-- Subject Selection Screen -->
+        <div class="subject-selection" id="subjectSelection">
+            <h2>Choose Your Subject</h2>
+            <div class="subject-grid">
+                <button class="subject-card english-font" onclick="startQuiz('english')">
+                    <h3>📚 English</h3>
+                    <p>Grammar & Language Skills</p>
+                </button>
+                <button class="subject-card hindi-font" onclick="startQuiz('hindi')">
+                    <h3>📖 हिंदी</h3>
+                    <p>व्याकरण और भाषा कौशल</p>
+                </button>
+                <button class="subject-card" onclick="startQuiz('mathematics')">
+                    <h3>🔢 Mathematics</h3>
+                    <p>Numbers & Problem Solving</p>
+                </button>
+                <button class="subject-card" onclick="startQuiz('science')">
+                    <h3>🔬 Science</h3>
+                    <p>Discovery & Experiments</p>
+                </button>
+                <button class="subject-card" onclick="startQuiz('socialscience')">
+                    <h3>🌍 Social Science</h3>
+                    <p>History, Geography & Civics</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div class="quiz-screen" id="quizScreen">
+            <div class="quiz-header">
+                <div class="level-info">
+                    Level <span id="currentLevel">1</span> of 20
+                </div>
+                <div class="timer" id="timer">30</div>
+                <button class="back-btn" onclick="goBack()">← Back</button>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+
+            <div class="question-container" id="questionContainer">
+                <div class="question" id="questionText"></div>
+                <div class="options" id="optionsContainer"></div>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div class="result-screen" id="resultScreen">
+            <div class="result-card">
+                <div class="result-icon" id="resultIcon"></div>
+                <div class="result-text" id="resultText"></div>
+                <div class="result-score" id="resultScore"></div>
+                <button class="continue-btn" id="continueBtn" onclick="nextLevel()" style="display: none;">Continue to Next Level</button>
+                <button class="retry-btn" onclick="retryLevel()">Try Again</button>
+                <button class="back-btn" onclick="goToSubjects()">Choose Subject</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game state variables
+        let currentSubject = '';
+        let currentLevel = 1; // Current level, starting from 1
+        let currentQuestionIndex = 0; // Index of the current question within the level
+        let score = 0; // Score for the current level
+        let timer = 30; // Initial timer value
+        let timerInterval; // Stores the interval ID for the timer
+        let questionsForLevel = []; // Array to hold questions for the current level
+        let questionsForSubject = {}; // Object to hold all questions loaded from JSON files
+        const TOTAL_LEVELS = 20; // Total number of levels per subject
+        const QUESTIONS_PER_LEVEL = 7; // Number of questions per level
+
+        // Make functions globally accessible for HTML onclick attributes
+        window.showSubjectSelection = showSubjectSelection;
+        window.startQuiz = startQuiz;
+        window.goBack = goBack;
+        window.goToSubjects = goToSubjects;
+        window.nextLevel = nextLevel;
+        window.retryLevel = retryLevel;
+
+        /**
+         * Function to create floating background particles for visual appeal.
+         */
+        function createFloatingParticles() {
+            const container = document.querySelector('.floating-particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%'; // Random horizontal position
+                particle.style.top = Math.random() * 100 + '%';   // Random vertical position
+                particle.style.animationDelay = Math.random() * 6 + 's'; // Random animation start delay
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's'; // Random animation duration
+                container.appendChild(particle);
+            }
+        }
+
+        /**
+         * Transitions from the start screen to the subject selection screen.
+         */
+        function showSubjectSelection() {
+            const startScreen = document.getElementById('startScreen');
+            startScreen.style.opacity = '0'; // Fade out the start screen
+            setTimeout(() => {
+                startScreen.style.display = 'none'; // Hide it after fade
+                document.getElementById('subjectSelection').style.display = 'flex'; // Show subject selection
+            }, 500); // Match opacity transition duration
+        }
+
+        /**
+         * Starts the quiz for a selected subject.
+         * Fetches questions from the corresponding JSON file.
+         * @param {string} subject - The subject chosen by the user (e.g., 'english', 'mathematics').
+         */
+        async function startQuiz(subject) {
+            currentSubject = subject;
+            currentLevel = 1;
+            currentQuestionIndex = 0;
+            score = 0; // Reset score for the new quiz session
+            
+            // Hide subject selection and show quiz screen
+            document.getElementById('subjectSelection').style.display = 'none';
+            document.getElementById('quizScreen').style.display = 'flex';
+
+            try {
+                // If questions for this subject are not already loaded, fetch them
+                if (!questionsForSubject[subject]) {
+                    // Construct the JSON file path based on the subject
+                    const jsonFilePath = `${subject}.json`; // e.g., 'mathematics.json'
+                    const response = await fetch(jsonFilePath); // Fetch the JSON data
+                    if (!response.ok) {
+                        throw new Error(`Failed to load questions for ${subject}: ${response.statusText}`);
+                    }
+                    const allQuestions = await response.json(); // Parse the JSON data
+
+                    // Ensure the loaded questions array has enough levels (at least up to TOTAL_LEVELS)
+                    if (allQuestions.length < TOTAL_LEVELS) {
+                        console.warn(`Not enough levels in ${subject}.json. Expected ${TOTAL_LEVELS}, found ${allQuestions.length}. Duplicating levels.`);
+                        // Fallback: If not enough levels, duplicate existing ones
+                        while (allQuestions.length < TOTAL_LEVELS) {
+                            const levelToDuplicate = allQuestions[allQuestions.length % allQuestions.length]; // Cycle through available levels
+                            allQuestions.push([...levelToDuplicate]); // Add a copy of the level
+                        }
+                    } else if (allQuestions.length > TOTAL_LEVELS) {
+                        // If there are more levels than required, trim them
+                        allQuestions.splice(TOTAL_LEVELS);
+                        console.warn(`Too many levels in ${subject}.json. Trimmed to ${TOTAL_LEVELS} levels.`);
+                    }
+                    questionsForSubject[subject] = allQuestions; // Store all questions for the subject
+                }
+                
+                loadLevel(); // Load the first level
+            } catch (error) {
+                console.error("Error loading quiz questions:", error);
+                // Display an error message to the user
+                document.getElementById('questionText').textContent = "Error loading questions. Please try again later.";
+                document.getElementById('optionsContainer').innerHTML = ''; // Clear options
+                clearInterval(timerInterval);
+                document.getElementById('timer').textContent = "--";
+            }
+        }
+
+        /**
+         * Navigates back to the subject selection screen.
+         * Clears the timer.
+         */
+        function goBack() {
+            document.getElementById('quizScreen').style.display = 'none';
+            document.getElementById('subjectSelection').style.display = 'flex';
+            clearInterval(timerInterval); // Stop the timer
+        }
+
+        /**
+         * Navigates from the result screen back to the subject selection screen.
+         * Clears the timer.
+         */
+        function goToSubjects() {
+            document.getElementById('resultScreen').style.display = 'none';
+            document.getElementById('subjectSelection').style.display = 'flex';
+            clearInterval(timerInterval); // Stop the timer
+        }
+
+        /**
+         * Proceeds to the next level of the quiz.
+         * Increments the current level and loads questions for that level.
+         */
+        function nextLevel() {
+            currentLevel++;
+            loadLevel(); // Load the new level
+            
+            // Hide result screen and show quiz screen
+            document.getElementById('resultScreen').style.display = 'none';
+            document.getElementById('quizScreen').style.display = 'flex';
+        }
+
+        /**
+         * Retries the current level.
+         * Resets question index and score for the current level and reloads it.
+         */
+        function retryLevel() {
+            loadLevel(); // Reload the current level
+            
+            // Hide result screen and show quiz screen
+            document.getElementById('resultScreen').style.display = 'none';
+            document.getElementById('quizScreen').style.display = 'flex';
+        }
+
+        /**
+         * Loads questions for the current level.
+         * Resets score and question index for the new level.
+         * Updates level display and progress bar.
+         */
+        function loadLevel() {
+            // Check if all levels are completed for the current subject
+            if (currentLevel > TOTAL_LEVELS) {
+                showResult(true); // Indicate overall completion for the subject
+                return;
+            }
+
+            // Get questions for the current level from the loaded subject questions.
+            // Adjust index to be 0-based for array access (level 1 is index 0).
+            questionsForLevel = questionsForSubject[currentSubject][currentLevel - 1]; 
+            
+            // Validate if questions exist for this level and if there are enough questions
+            if (!questionsForLevel || questionsForLevel.length === 0) {
+                console.error(`No questions found for level ${currentLevel} in ${currentSubject}.json. Falling back to first level's questions.`);
+                // Fallback: Use questions from level 1 if current level questions are missing
+                questionsForLevel = questionsForSubject[currentSubject][0];
+                if (!questionsForLevel || questionsForLevel.length === 0) {
+                    // Critical error: no questions available at all
+                    document.getElementById('questionText').textContent = "Critical error: No questions available for any level. Please check question files.";
+                    document.getElementById('optionsContainer').innerHTML = '';
+                    clearInterval(timerInterval);
+                    document.getElementById('timer').textContent = "--";
+                    return;
+                }
+            }
+
+            // Ensure each level has exactly QUESTIONS_PER_LEVEL questions
+            if (questionsForLevel.length < QUESTIONS_PER_LEVEL) {
+                 console.warn(`Level ${currentLevel} in ${currentSubject}.json has fewer than ${QUESTIONS_PER_LEVEL} questions. Duplicating questions to fill.`);
+                 while (questionsForLevel.length < QUESTIONS_PER_LEVEL) {
+                    // Duplicate by cycling through existing questions in the level
+                    const questionToDuplicate = questionsForLevel[questionsForLevel.length % questionsForLevel.length];
+                    questionsForLevel.push({ ...questionToDuplicate }); // Add a copy to avoid reference issues
+                 }
+            } else if (questionsForLevel.length > QUESTIONS_PER_LEVEL) {
+                questionsForLevel = questionsForLevel.slice(0, QUESTIONS_PER_LEVEL); // Trim to QUESTIONS_PER_LEVEL questions
+            }
+
+            currentQuestionIndex = 0; // Start from the first question of the new level
+            score = 0; // Reset score for the current level
+
+            // Update level display
+            document.getElementById('currentLevel').textContent = currentLevel;
+            
+            updateProgress(); // Update progress bar
+            loadQuestion(); // Load the first question of the level
+        }
+
+        /**
+         * Loads and displays the current question and its options.
+         * Sets up the timer for the question.
+         */
+        function loadQuestion() {
+            // Check if all questions in the current level are answered
+            if (currentQuestionIndex >= questionsForLevel.length) {
+                showResult(false); // Show results for the current level (not overall quiz completion)
+                return;
+            }
+
+            const questionData = questionsForLevel[currentQuestionIndex];
+            document.getElementById('questionText').textContent = questionData.question;
+            
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = ''; // Clear previous options
+            
+            // Create buttons for each option
+            questionData.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'option';
+                button.textContent = option;
+                button.onclick = () => selectAnswer(index); // Attach click event
+                optionsContainer.appendChild(button);
+            });
+
+            // Apply subject-specific fonts (cursive for Maths, Science, Social Science, English; Hindi for Hindi)
+            const questionTextElement = document.getElementById('questionText');
+            if (currentSubject === 'mathematics' || currentSubject === 'science' || currentSubject === 'socialscience' || currentSubject === 'english') {
+                questionTextElement.className = 'question cursive-font'; /* Apply cursive font for Maths, Science, Social Science, and English */
+            } else if (currentSubject === 'hindi') {
+                questionTextElement.className = 'question hindi-font';
+            } else {
+                questionTextElement.className = 'question'; // Default Poppins for any other unexpected subject
+            }
+
+            startTimer(); // Start the timer for the new question
+        }
+
+        /**
+         * Starts the timer for the current question.
+         * Timer duration is 40 seconds for mathematics, 30 for others.
+         */
+        function startTimer() {
+            clearInterval(timerInterval); // Clear any existing timer
+            timer = currentSubject === 'mathematics' ? 40 : 30; // Set timer duration
+            document.getElementById('timer').textContent = timer; // Display initial time
+            
+            timerInterval = setInterval(() => {
+                timer--;
+                document.getElementById('timer').textContent = timer;
+                
+                if (timer <= 0) {
+                    clearInterval(timerInterval); // Stop timer
+                    selectAnswer(-1); // Time's up, consider it a wrong answer
+                }
+            }, 1000); // Update every second
+        }
+
+        /**
+         * Handles the user's answer selection.
+         * Checks if the answer is correct, updates score, and provides visual feedback.
+         * Moves to the next question after a delay.
+         * @param {number} selectedIndex - The index of the option selected by the user.
+         */
+        function selectAnswer(selectedIndex) {
+            clearInterval(timerInterval); // Stop the timer
+            
+            const questionData = questionsForLevel[currentQuestionIndex];
+            const options = document.querySelectorAll('.option');
+            
+            // Disable all options to prevent multiple selections
+            options.forEach(option => option.disabled = true);
+            
+            // Provide visual feedback for correct/incorrect answers
+            if (selectedIndex === questionData.correct) {
+                options[selectedIndex].classList.add('correct'); // Green for correct
+                score++; // Increment score if correct
+            } else {
+                if (selectedIndex >= 0) { // If an option was actually selected (not time's up)
+                    options[selectedIndex].classList.add('incorrect'); // Red for incorrect
+                }
+                options[questionData.correct].classList.add('correct'); // Always show the correct answer
+            }
+            
+            // Move to the next question after a short delay for feedback visibility
+            setTimeout(() => {
+                currentQuestionIndex++;
+                updateProgress(); // Update progress bar
+                loadQuestion(); // Load the next question or show results
+            }, 1500); // 1.5 seconds delay
+        }
+
+        /**
+         * Updates the progress bar based on the current question index.
+         */
+        function updateProgress() {
+            const progress = (currentQuestionIndex / questionsForLevel.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        /**
+         * Displays the result screen for the current level or overall quiz completion.
+         * @param {boolean} [quizCompleted=false] - True if the entire quiz (all levels for the subject) is completed.
+         */
+        function showResult(quizCompleted = false) {
+            document.getElementById('quizScreen').style.display = 'none'; // Hide quiz screen
+            document.getElementById('resultScreen').style.display = 'flex'; // Show result screen
+            
+            const resultIcon = document.getElementById('resultIcon');
+            const resultText = document.getElementById('resultText');
+            const resultScore = document.getElementById('resultScore');
+            const continueBtn = document.getElementById('continueBtn');
+            
+            resultScore.textContent = `You scored: ${score} out of ${QUESTIONS_PER_LEVEL}`; // Display score
+            
+            // Determine passing status (e.g., 70% of questions correct to pass a level)
+            const requiredScore = Math.ceil(QUESTIONS_PER_LEVEL * 0.7); // Round up to ensure a solid pass
+            const passed = score >= requiredScore;
+            
+            if (quizCompleted) {
+                // If all levels for the subject are completed
+                resultIcon.textContent = '🏆'; // Trophy icon
+                resultIcon.className = 'result-icon pass'; // Green color
+                resultText.textContent = 'Congratulations! You have completed all levels for this subject!';
+                continueBtn.style.display = 'none'; // No more levels to continue for this subject
+            } else if (passed) {
+                // If passed the current level but not all levels for the subject yet
+                resultIcon.textContent = '🎉'; // Party popper icon
+                resultIcon.className = 'result-icon pass'; // Green color
+                resultText.textContent = `Great job! You passed Level ${currentLevel}!`;
+                
+                if (currentLevel < TOTAL_LEVELS) {
+                    continueBtn.style.display = 'inline-block'; // Show continue button for next level
+                } else {
+                    continueBtn.style.display = 'none'; // Hide if it's the last level
+                }
+            } else {
+                // If failed the current level
+                resultIcon.textContent = '😞'; // Disappointed face icon
+                resultIcon.className = 'result-icon fail'; // Red color
+                resultText.textContent = `You need ${requiredScore} correct answers to pass this level. Try again!`;
+                continueBtn.style.display = 'none'; // Hide continue button
+            }
+        }
+
+        // Initialize the game when the window loads
+        window.onload = function() {
+            createFloatingParticles(); // Create background particles
+            // The start screen is already set to 'display: flex' in CSS for initial visibility
+        };
+    </script>
+</body>
+</html>
